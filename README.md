@@ -4,3 +4,7 @@
 ## DESCRIPTION 
 
 Ceci est un projet d'analyse de données basé sur la base de donnée Contoso
+
+### Modèle tabulaire
+
+![Modele](img/model.png)

@@ -517,6 +517,60 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1036\" DisplayName=\"€ Français (France)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "Margin %",
+            "expression": " [Margin]/[Sum of Sales Amount]",
+            "formatString": "0.00 %;-0.00 %;0.00 %",
+            "kpi": {
+              "targetExpression": "1",
+              "targetFormatString": "0.00 %;-0.00 %;0.00 %",
+              "statusGraphic": "Three Flags Colored",
+              "statusExpression": [
+                "var x='FactSales'[Margin %] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.52,-1,",
+                "\t                If(x<0.57,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "StaticValue"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Absolute"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "0.52"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "0.57"
+                }
+              ]
+            }
+          },
+          {
+            "name": "AVG%",
+            "expression": " CALCULATE([Margin %],ALLSELECTED())",
+            "formatString": "0.00 %;-0.00 %;0.00 %"
           }
         ]
       },
